@@ -35,7 +35,7 @@ const userSchema = mongoose.Schema({
 
 userSchema.pre('save',  function (next) {
     const user = this
-    console.log(this)
+    console.log('this', this)
     // this =  내가 보낸 정보
 
     if(user.isModified('password')) {
