@@ -80,6 +80,37 @@ useCreateIndex : If true, this connection will use createIndex() instead of ensu
 >error
 참고 링크: https://velog.io/@jsy7517/Error-listen-EADDRINUSE-address-already-in-use-5000
 
+# 1-3.api 설정하기
+
+## body-parser 설치
+터미널에 `npm i body-parser`을 설치한다.
+
+### body-parser를 설치하는 이유
+```javascript
+app.post('/register', (req, res)=>{
+    console.log(req.body)
+})
+```
+`req.body`는 body-parser를 사용하기 전에는 디폴트 값으로 `undefined`가 설정된다.
+따라서 undefined error를 방지하려면 body-parcer를 설치해야 한다.
+
+단, express.js v4.16.0 이상에서는 body-parcer를 설치하지 않아도 사용가능하다.
+```javascript
+const express = require('express')
+const app = express()
+app.use(express.json())
+
+app.post('/register', (req, res)=>{
+    console.log(req.body)
+})
+```
+
+## postman 사용
+`http://localhost:(포트번호)/(하위주소)`로 메서드를 바르게 입력하여(post, get, put, delete가 존재한다) 정보값을 받는다. post의 경우, 보내는 정보는 model/User에 있는 객체값이다.(필수 값이 없으므로 아무거나 보내봐도 괜찮다. 'name'만 보내도 괜찮고, 'name'과 'email'을 함께 보내도 된다)
+
+mongoDB에서 중복에러가 발생할 수 있다.
+하위 문서 참조 : https://dubaiyu.tistory.com/281
+
 
 
 
