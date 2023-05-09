@@ -114,7 +114,26 @@ mongoDB에서 중복에러가 발생할 수 있다.
 # 1-4. 비밀정보 숨기기
 참조 문서 : https://www.daleseo.com/js-dotenv/
 
+# 1-5. 비밀번호 암호화 설정
 
+## bcrypt 설치
+터미널에 `npm i bcrypt`를 입력한다.
+bcrypt는 문자정보(string)을 암호화하는 기능이 존재한다.
 
+```javascript
+// index.js
+const user = new User(req.body)
+user.save()
+```
+에서 `save()` 되기 전에 bcrypt가 작동해야 한다
 
+```javascript
+// model.User.js
+const bcrypt = require('bcrypt')
+const saltRounds = 10
 
+userSchema.pre('save',  function (next) {})
+```
+로 'save' 되기 전 함수를 작동시키게 만든다.
+pre메서드의 함수는 반드시 `function () {}`으로 생성한다.
+화살표 함수를 생성하면 `TypeError: user.isModified is not a function`와 같은 타입에러가 발생한다.
