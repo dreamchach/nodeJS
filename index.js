@@ -4,13 +4,15 @@ const port = 5000
 // const bodyParser = require('body-parser')
 const {User}=require('./model/User')
 
+require('dotenv').config()
+
 // app.use(bodyParser.urlencoded({extended:true}))
 // app.use(bodyParser.json())
 // app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://aaa:asdf1234@node-test.uim33ep.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(process.env.mongoDB_URI, {
     useNewUrlParser:true, useUnifiedTopology:true
 }).then(()=>console.log('mongoDB is connected')).catch((error)=>console.log(error))
 

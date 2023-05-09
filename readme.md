@@ -111,6 +111,10 @@ app.post('/register', (req, res)=>{
 mongoDB에서 중복에러가 발생할 수 있다.
 하위 문서 참조 : https://dubaiyu.tistory.com/281
 
+# 1-4. 비밀정보 숨기기
+참조 문서 : https://www.daleseo.com/js-dotenv/
+
+
 
 
 
