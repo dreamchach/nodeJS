@@ -143,3 +143,17 @@ git pull을 하고 git push를 했는데 에러가 났다면 https://www.githubs
 github의 업데이트 일정과 `current status`의 `git operations`에서 git push 상태 여부를 알 수 있다.
 참조 문서 : https://eloquence-developers.tistory.com/175
 
+# 1-6. 로그인 기능과 토큰 생성
+
+## jsonwebtoken 라이브러리 설치
+터미널에 `npm i jsonwebtoken`입력
+
+## cookie-parser 라이브러리 설치
+터미널에 `npm i cookie-parser`입력
+쿠키에 token을 저장하는 라이브러리
+
+발생한 에러들 참조문서 
+https://www.inflearn.com/questions/814735/model-findone-no-longer-accepts-a-callback-%EC%98%A4%EB%A5%98
+
+https://www.inflearn.com/questions/42533/postman%EC%97%90%EC%84%9C-sending-request-%EB%AC%B8%EA%B5%AC%EA%B0%80-%EB%9C%A8%EB%A9%B4%EC%84%9C-%ED%97%9B%EB%8F%8C%EA%B3%A0-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4
+
