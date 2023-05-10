@@ -157,3 +157,74 @@ https://www.inflearn.com/questions/814735/model-findone-no-longer-accepts-a-call
 
 https://www.inflearn.com/questions/42533/postman%EC%97%90%EC%84%9C-sending-request-%EB%AC%B8%EA%B5%AC%EA%B0%80-%EB%9C%A8%EB%A9%B4%EC%84%9C-%ED%97%9B%EB%8F%8C%EA%B3%A0-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4
 
+
+# 1-7. 메서드 분석
+
+```javascript
+const express = require('express')
+const app = express()
+
+express.json()
+
+app.use()
+
+app.get()
+app.post()
+app.put()
+app.patch()
+app.delete()
+
+app.listen()
+```
+
+```javascript
+const {User} = require('./model/User')
+
+User.findOne({}).then((user)=>{
+  user.comparePassword()
+  user.generateToken()
+  user.isModified()
+  user.save()
+})
+User.findOneAndUpdate()
+User.findByToken()
+```
+
+```javascript
+const mongoose = require('mongoose')
+
+mongoose.connect()
+mongoose.model()
+const UserSchema = mongoose.Schema({})
+
+UserSchema.pre()
+userSchema.methods.comparePassword = ()=>{}
+userSchema.methods.generateToken = ()=>{}
+userSchema.statics.findByToken = ()=>{}
+```
+
+```javascript
+res.send()
+res.status()
+res.json()
+
+req.body()
+```
+
+```javascript
+const bcrypt = require('bcrypt')
+
+bcrypt.genSalt()
+bcrypt.hash()
+bcrypt.compare()
+```
+
+```javascript
+const jwt = require('jsonwebtoken')
+
+jwt.sign()
+jwt.verify()
+```
+
+
+

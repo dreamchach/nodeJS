@@ -1,35 +1,27 @@
 const express = require('express')
 const app = express()
 const port = 5000
-// const bodyParser = require('body-parser')
 const {User}=require('./model/User')
 const cookieParser = require('cookie-parser')
 const {auth}=require('./middleware/auth')
+const mongoose = require('mongoose')
 
 require('dotenv').config()
 
-// app.use(bodyParser.urlencoded({extended:true}))
-// app.use(bodyParser.json())
-// app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cookieParser())
 
-const mongoose = require('mongoose')
 mongoose.connect(process.env.mongoDB_URI, {
     useNewUrlParser:true, useUnifiedTopology:true
 }).then(()=>console.log('mongoDB is connected')).catch((error)=>console.log(error))
 
-app.get('/', (req, res)=>res.send('hello world'))
+app.get('/', (req, res)=>{
+    res.send('hello world')
+})
 
 app.post('/api/user/register', (req, res)=>{
     const user = new User(req.body)
-    
-//    user.save((error, userInfo)=>{
-//        if(error) return res.json({success:false, err})
-//        return res.status(200).json({
-//            success:true
-//        })
-//    })
+
     user.save().then(()=>{
         return res.status(200).json({
             success:true
@@ -43,6 +35,7 @@ app.post('/api/user/register', (req, res)=>{
 app.post('/api/user/login', (req, res)=>{
     User.findOne({email:req.body.email})
     .then(user=>{
+        console.log(user)
         if(!user) {
             return res.json({
                 loginSuccess:false,
