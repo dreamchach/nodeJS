@@ -137,3 +137,9 @@ userSchema.pre('save',  function (next) {})
 로 'save' 되기 전 함수를 작동시키게 만든다.
 pre메서드의 함수는 반드시 `function () {}`으로 생성한다.
 화살표 함수를 생성하면 `TypeError: user.isModified is not a function`와 같은 타입에러가 발생한다.
+
+>git push error
+git pull을 하고 git push를 했는데 에러가 났다면 https://www.githubstatus.com/ 로 접속해보는 것이 좋다. 
+github의 업데이트 일정과 `current status`의 `git operations`에서 git push 상태 여부를 알 수 있다.
+참조 문서 : https://eloquence-developers.tistory.com/175
+
