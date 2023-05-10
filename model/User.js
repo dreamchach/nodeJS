@@ -54,15 +54,15 @@ userSchema.pre('save',  function (next) {
 })
 
 userSchema.methods.comparePassword = function(plainPassword, cb) {
-    bcrypt.compare(plainPassword, this.password, function(err, isMatch){
+    bcrypt.compare(plainPassword, this.password, (err, isMatch)=>{
         if(err) return cb(err)
         cb(null, isMatch)
     })
 }
 
-userSchema.methods.generateToken = function(cb) {
-    var user = this
-    var token = jwt.sign(user._id.toHexString(), 'secretToken')
+userSchema.methods.generateToken = function (cb) {
+    const user = this
+    const token = jwt.sign(user._id.toHexString(), 'secretToken')
     user.token = token
     user.save().then((user)=>cb(null, user)).catch((err)=>cb(err))
     /*user.save(function(err, user) {
@@ -71,6 +71,16 @@ userSchema.methods.generateToken = function(cb) {
     })
     */
 }
+
+userSchema.statics.findByToken = function (token, cb) {
+    var user = this
+    jwt.verify(token, 'secretToken', function (err, decoded){
+        user.findOne({"_id" : decoded, "token":token})
+        .then((user)=>cb(null, user))
+        .catch((err)=>{if(err) return cb(err)})
+    })
+}
+
 
 const User = mongoose.model('User', userSchema)
 module.exports = {User}
