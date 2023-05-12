@@ -229,5 +229,33 @@ jwt.verify()
 # 심화 1-1. vite로 react 시작
 react snippet을 사용하려면 vs코드 확장프로그램에서 `es7`을 검색한 후, `VS Code ES7+ React/Redux/React-Native/JS snippets`를 설치해준다.
 
+# 심화 1-2. eslint 설정
+typescript는 에러를 잡아주지만, javascript는 불가능하기 때문에 eslint를 설정해주는 것이 좋다.
+
+`npm i -D vite-plugin-eslint`
+`npm i -D eslint`
+`npm i -D eslint-config-react-app`
+을 설치한다.
+
+`vite.config.js` 파일에서 
+```javascript
+import eslint from 'vite-plugin-eslint'
+
+export default defineConfig({
+  plugins:[react(), eslint()]
+})
+```
+를 설정한다.
+
+`.eslintrc` 파일을 생성한 후, 
+```javascript
+{
+  "extends":[
+    "react-app"
+  ]
+}
+```
+으로 설정해준다.
+
 
 
