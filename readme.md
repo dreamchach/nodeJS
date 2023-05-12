@@ -308,5 +308,25 @@ const Layout = () => {
 }
 ```
 에서 `Outlet`해당 경로에 따른 페이지를 불러올 수 있다.
- 
+
+심화1-5. css와 react-icons
+`npm i react-icons`로 react-icons를 설치하고, react-icons 웹페이지에서 원하는 icon을 찾아 사용한다. 
+
+사용법을 아래를 참조하면 된다.
+`import {{폴더명}OutlineCheckCircle} from 'react-icons/(폴더명)`
+이기 때문에 반드시 폴더명들은 일치해야한다.
+
+```javascript
+import {AiOutlineCheckCircle} from 'react-icons/ai'
+
+const Footer = () => {
+  return (
+    <div>
+      <AiOutlineCheckCircle/>
+    </div>
+  )
+}
+```
+
+
 
