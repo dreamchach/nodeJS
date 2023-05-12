@@ -381,4 +381,71 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 ```
 
+심화1-7. redux-persist
+`redux-persist`는 새로고침을 했을 시, local storage에 redux의 정보가 남아있을 수 있게 해주는 라이브러리이다.
 
+`npm i redux-persist`로 라이브러리를 설치한다.
+
+store/index.js파일에서
+`combineReducers`로 reducer들을 합친다.
+```javascript
+import { combineReducers } from "@reduxjs/toolkit";
+
+const rootReducer = combineReducers({
+    user:userReducer,
+})
+```
+
+local storage에 저장될 key값을 설정한다.
+```javascript
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+    key:'root',
+    storage
+}
+```
+
+persistReducer를 설정한다.
+```javascript
+import { persistReducer } from "redux-persist";
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+```
+
+configureStore의 middleware를 설정한다.
+```javascript
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from "redux-persist";
+
+export const store = configureStore({
+    reducer: persistedReducer,
+    middleware:getDefaultMiddleware=>getDefaultMiddleware({
+        serializableCheck: {
+            ignoredActions:[FLUSH, REHYDRATE,PAUSE,PERSIST, PURGE,REGISTER]
+        }
+    })
+})
+```
+
+>`getDefaultMiddleware`에서 취소선이 생긴다.
+참고자료: https://stackoverflow.com/questions/68479631/getting-warning-message-getdefaultmiddleware-is-deprecated
+
+persistStore를 export한다.
+```javascript
+import { persistStore } from "redux-persist";
+
+export const persistor = persistStore(store)
+```
+
+`PersistGate`로 `App`을 감싼다.
+```javascript
+import { persistor } from './store/index.js'
+import { PersistGate } from 'redux-persist/integration/react'
+
+<PersistGate loading={null} persistor={persistor}>
+  <App />
+</PersistGate>
+```
+
+>실수로 생긴 에러
+https://gwpaeng.tistory.com/346
