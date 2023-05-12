@@ -261,5 +261,52 @@ export default defineConfig({
 vite-react에서 tailwindCss 설치 시 참고자료
 https://tailwindcss.com/docs/guides/vite(공식 문서)
 
+심화 1-4. router과 layout
+`npm i react-router-dom`을 설치해준다
 
+main.jsx 파일에서
+```javascript
+import { BrowserRouter } from 'react-router-dom'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)
+```
+와 같이 `<BrowserRouter>`로 `<App>`을 감싸준다.(react-router-dom을 사용하기 위한 준비과정)
+
+App.js파일에서 
+```javascript
+import { Route, Routes } from "react-router-dom"
+
+<Routes>
+<Route path="/" element={<Layout/>}>
+  <Route index element={<Landing/>}/>
+  <Route path="/login" element={<Login/>}/>
+</Route>
+</Routes>
+```
+와 같이 `<Routes>`로 `<Route>`를 감싸준다.
+`<Route>`의 `path` 속성에 경로를 입력하고, `index`속성은 `/`경로로 layout이 지정되었을 경우 들어갈 수 있는 시작페이지이다.
+`element`속성으로 경로의 페이지를 지정한다.
+
+layout/Layout.jsx 파일에서
+```javascript
+import { Outlet } from 'react-router-dom'
+
+const Layout = () => {
+  return (
+    <div>
+        <Navbar/>
+        <main>
+            <Outlet/>
+        </main>
+        <Footer/>
+    </div>
+  )
+}
+```
+에서 `Outlet`해당 경로에 따른 페이지를 불러올 수 있다.
+ 
 
