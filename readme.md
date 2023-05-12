@@ -328,5 +328,57 @@ const Footer = () => {
 }
 ```
 
+심화1-6. redux
+`npm i react-redux`
+`npm i @reduxjs/toolkit`
+으로 redux-toolkit을 설치한다.
+
+store/userSlice.js파일에서
+초기값은 initialState를 설정한다.
+```javascript
+const initialState = {
+  userData: {
+    name:''
+  }
+}
+```
+
+store/userSlice.js파일에서
+redux-toolkit으로 createSlice를 생성한다.
+```javascript
+import { createSlice } from "@reduxjs/toolkit"
+
+const userSlice = createSlice({
+    name:'user',
+    initialState,
+    reducers:{},
+    extraReducers:(builder)=>{}
+})
+```
+
+store/index.js파일에서 store를 생성한다.
+```javascript
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer  from './userSlice'
+
+export const store = configureStore({
+    reducer: {
+        user: userReducer
+    }
+})
+```
+여기서 `./userSlice`에서 나온 명칭은 정확하게는 `(리듀서명).reducer`가 되므로 새로 명명을 해도 좋다.
+
+그리고, main.jsx에서 `Provider`로 `App`을 감싸준다.
+```javascript
+import { Provider } from 'react-redux'
+import { store } from './store/index.js'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+)
+```
 
 
