@@ -226,5 +226,8 @@ jwt.sign()
 jwt.verify()
 ```
 
+# 심화 1-1. vite로 react 시작
+react snippet을 사용하려면 vs코드 확장프로그램에서 `es7`을 검색한 후, `VS Code ES7+ React/Redux/React-Native/JS snippets`를 설치해준다.
+
 
 
