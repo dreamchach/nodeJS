@@ -257,5 +257,9 @@ export default defineConfig({
 ```
 으로 설정해준다.
 
+심화 1-3. tailwindCss 설치
+vite-react에서 tailwindCss 설치 시 참고자료
+https://tailwindcss.com/docs/guides/vite(공식 문서)
+
 
 
