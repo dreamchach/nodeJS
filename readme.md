@@ -329,6 +329,11 @@ const Footer = () => {
 ```
 
 심화1-6. redux
+
+>참고자료
+https://kyounghwan01.github.io/blog/React/redux/redux-basic/
+https://kyounghwan01.github.io/blog/React/redux/redux-toolkit/
+
 `npm i react-redux`
 `npm i @reduxjs/toolkit`
 으로 redux-toolkit을 설치한다.
@@ -383,6 +388,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 심화1-7. redux-persist
 `redux-persist`는 새로고침을 했을 시, local storage에 redux의 정보가 남아있을 수 있게 해주는 라이브러리이다.
+
+>redux-persist 참고자료
+https://kyounghwan01.github.io/blog/React/redux/redux-persist/#%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%B2
 
 `npm i redux-persist`로 라이브러리를 설치한다.
 
@@ -449,3 +457,9 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 >실수로 생긴 에러
 https://gwpaeng.tistory.com/346
+
+심화1-8. 백엔드 기본구조 생성
+>bcrypt vs bcryptjs
+https://github.com/kelektiv/node.bcrypt.js/issues/705#issuecomment-463492202
+https://www.inflearn.com/questions/409596/bcrypt%EC%99%80-bcryptjs
+https://lahuman.github.io/bcrypt_bcryptjs/
