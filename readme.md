@@ -463,3 +463,31 @@ https://gwpaeng.tistory.com/346
 https://github.com/kelektiv/node.bcrypt.js/issues/705#issuecomment-463492202
 https://www.inflearn.com/questions/409596/bcrypt%EC%99%80-bcryptjs
 https://lahuman.github.io/bcrypt_bcryptjs/
+
+심화1-9. express.static
+`express.static()`은 정적 파일을 옮기기 위한 메서드이다.
+
+```javascript
+//기본형
+app.use(express.static('정적파일이 있는 폴더명'))
+
+// 검색 시
+// http://localhost:4000/파일명.파일확장자
+
+// 상세경로 지정 시
+app.use('/image' ,express.static('정적파일이 있는 폴더명'))
+
+// 검색 시
+// http://localhost:4000/image/파일명.파일확장자
+
+// 버그 방지를 위한 정적파일 상세경로 지정
+const path = require('path')
+
+app.use(express.static(path.join(__dirname, '../정적 파일이 있는 폴더명')))
+
+// 검색 시
+// http://localhost:4000/image/파일명.파일확장자
+```
+
+
+
