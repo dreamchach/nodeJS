@@ -489,5 +489,14 @@ app.use(express.static(path.join(__dirname, '../정적 파일이 있는 폴더�
 // http://localhost:4000/image/파일명.파일확장자
 ```
 
+심화1-10. cors설정
+`npm i cors`로 cors 라이브러리 설치
+```javascript
+const cors = require('cors')
+
+app.use(cors())
+```
+로 설정
+
 
 
