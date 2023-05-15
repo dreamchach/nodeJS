@@ -489,7 +489,7 @@ app.use(express.static(path.join(__dirname, '../정적 파일이 있는 폴더�
 // http://localhost:4000/image/파일명.파일확장자
 ```
 
-심화1-10. cors설정
+# 심화1-10. cors설정
 `npm i cors`로 cors 라이브러리 설치
 ```javascript
 const cors = require('cors')
@@ -498,5 +498,31 @@ app.use(cors())
 ```
 로 설정
 
+# 심화1-11. express.json()
+```javascript
+const express = require('express')
+const app = express()
 
+app.post('/', (req, res)=>{
+  console.log(req.body)
+  res.json(req.body)
+})
+```
+단순히 이렇게 해버리면 req.body는 undefined가 뜬다. 
+왜냐하면 req.body의 parsing과정이 없기 때문이다.
+현재 express 라이브러리에는 body-parser라이브러리가 포함되어있기 때문에 고치는 방법은 간단하다(위에도 나와있다.)
 
+```javascript
+const express = require('express')
+const app = express()
+
+app.use(express.json())
+
+app.post('/', (req, res)=>{
+  console.log(req.body)
+  res.json(req.body)
+})
+```
+이렇게 하면 내가 보낸 값들을 객체로 다시 받을 수가 있다.
+
+# 1-12
