@@ -562,4 +562,10 @@ app.get('/', (req, res, next)=>{
 
 >만약 방법 3에서 `next`를 추가하지 않으면 서버가 충돌하는 현상으로 인해 서버가 닫힘
 
-# 심화1-15
+# 심화1-15 회원가입 ui 생성(react-router-dom)
+react에서는 `<a>` 대신 `react-router-dom`을 이용해서 이동하는 것이 일반적이다.
+>참고자료
+https://iridescent-zeal.tistory.com/214
+
+# 에러(E325-ATTENTION-해결하기)
+참고자료: https://itisyo.tistory.com/entry/Linux-VI-%EC%97%90%EB%94%94%ED%84%B0-E325-ATTENTION-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0
