@@ -508,9 +508,9 @@ app.post('/', (req, res)=>{
   res.json(req.body)
 })
 ```
-단순히 이렇게 해버리면 req.body는 undefined가 뜬다. 
-왜냐하면 req.body의 parsing과정이 없기 때문이다.
-현재 express 라이브러리에는 body-parser라이브러리가 포함되어있기 때문에 고치는 방법은 간단하다(위에도 나와있다.)
+단순히 이렇게 해버리면 `req.body`는 `undefined`가 뜬다. 
+왜냐하면 `req.body`의 `parsing`과정이 없기 때문이다.
+현재 `express` 라이브러리에는 `body-parser`라이브러리가 포함되어있기 때문에 고치는 방법은 간단하다(위에도 나와있다.)
 
 ```javascript
 const express = require('express')
@@ -531,3 +531,35 @@ app.post('/', (req, res)=>{
 # 심화1-13. model과 schema 생성하기
 위에 글 참조
 
+# 심화1-14. express에서 에러 처리하기
+1. 방법 1
+```javascript
+app.get('/', (req, res)=>{
+    throw new Error('it is an error')
+})
+```
+
+2. 방법 2
+```javascript
+app.use((error, req, res, next)=>{
+    res.status(error.status || 500)
+    res.send(error.message || '서버에서 에러가 났습니다')
+})
+
+app.get('/', (req, res)=>{
+    throw new Error('it is an error')
+})
+```
+
+3. 방법 3
+```javascript
+app.get('/', (req, res, next)=>{
+    setImmediate(()=>{
+        next(new Error('it is an error'))
+    })
+})
+```
+
+>만약 방법 3에서 `next`를 추가하지 않으면 서버가 충돌하는 현상으로 인해 서버가 닫힘
+
+# 심화1-15
