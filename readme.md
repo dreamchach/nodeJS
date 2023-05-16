@@ -579,3 +579,8 @@ https://vitejs-kr.github.io/guide/env-and-mode.html
 
 `axios instance` 참고문서
 https://yamoo9.github.io/axios/guide/api.html#%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1
+
+# 심화 1-18. redux
+추가공부 필요...
+여전히 redux는 헷갈린다...
+

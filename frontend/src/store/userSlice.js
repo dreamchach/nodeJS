@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { registerUser } from "./thunkFuntions"
 
 const initialState = {
     userData: {
@@ -17,7 +18,16 @@ const userSlice = createSlice({
     name:'user',
     initialState,
     reducers:{},
-    extraReducers:()=>{}
+    extraReducers:(builder)=>{
+        builder.addCase(registerUser.pending, (state)=>{
+            state.isLoading = true
+        }).addCase(registerUser.fulfilled, (state)=>{
+            state.isLoading = false
+        }).addCase(registerUser.rejected, (state, action)=>{
+            state.isLoading = false
+            state.error = action.payload
+        })
+    }
 })
 
 export default userSlice.reducer
