@@ -573,3 +573,9 @@ https://iridescent-zeal.tistory.com/214
 # 심화 1-16. react-hook-form 사용
 공식문서 참조: https://react-hook-form.com/form-builder
 
+# 심화 1-17. axios instance와 import.meta.env
+`import.meta.env`의 참고문서
+https://vitejs-kr.github.io/guide/env-and-mode.html
+
+`axios instance` 참고문서
+https://yamoo9.github.io/axios/guide/api.html#%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1
