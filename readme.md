@@ -584,3 +584,60 @@ https://yamoo9.github.io/axios/guide/api.html#%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%
 추가공부 필요...
 여전히 redux는 헷갈린다...
 
+# 심화 1-19. react-toastify
+1. `npm i react-toastify`로 react-toastify 설치
+2. react-toastify 박스를 띄울 장소에 `ToastContainer` 설치
+3. `react-toastify/dist/ReactToastify.css`를 import
+
+```javascript
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+const Layout = () => {
+  return (
+    <div>
+        <ToastContainer 
+        position='bottom-right' 
+        theme='light' 
+        pauseOnHover 
+        autoClose={1500}
+        />
+        <Navbar/>
+        <main>
+            <Outlet/>
+        </main>
+        <Footer/>
+    </div>
+  )
+}
+```
+
+4. 성공인지 실패인지에 따라 container 박스를 다르게 띄울 것.
+이번 경우에는 redux로 제어
+
+```javascript
+import { toast } from "react-toastify"
+
+const userSlice = createSlice({
+    name:'user',
+    initialState,
+    reducers:{},
+    extraReducers:(builder)=>{
+        builder.addCase(registerUser.pending, (state)=>{
+            state.isLoading = true
+        }).addCase(registerUser.fulfilled, (state)=>{
+            state.isLoading = false
+            toast.info('회원가입을 성공했습니다')
+        }).addCase(registerUser.rejected, (state, action)=>{
+            state.isLoading = false
+            state.error = action.payload
+            toast.error(action.payload|| '회원가입에 실패했습니다')
+        })
+    }
+})
+```
+
+>참고자료
+https://defineall.tistory.com/1021
+
+# 심화 1-20.
