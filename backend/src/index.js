@@ -33,18 +33,11 @@ app.get('/', (req, res)=>{
     throw new Error('it is an error')
 })
 */
-app.get('/', (req, res, next)=>{
-    setImmediate(()=>{
-        next(new Error('it is an error'))
-    })
+app.get('/', ()=>{
+    console.log('backend is ready!')
 })
 
-app.post('/', (req, res)=>{
-    console.log(req.body)
-    res.json(req.body)
-})
-
-
+app.use('/users', require('./routes/users'))
 
 app.use('/image' ,express.static(path.join(__dirname, '../uploads')))
 

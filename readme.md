@@ -640,4 +640,32 @@ const userSlice = createSlice({
 >참고자료
 https://defineall.tistory.com/1021
 
-# 심화 1-20.
+# 심화 1-20. express.Router()
+backend에서 index.js에서
+```javascript
+const express = require('express')
+const app - express()
+
+app.use('/users', require('./routes/users'))
+```
+`app.use()`의 첫번째 인지가 상위 `route path`이다.
+`require()`에 있던 폴더로 들어가면,
+```javascript
+const express = require('express')
+const router = express.Router()
+
+app.post('/register', async(req, res)=>{
+    try{
+        const user = new User(req.body)
+        await user.save()
+        return res.sendStatus(200)
+    } catch(error) {
+        next(error)
+    }
+})
+
+module.exports = router
+```
+로 작성하면, 예를 들어 위의 api주소는 `/users/register`로 이동된다.
+
+
