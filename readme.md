@@ -671,3 +671,7 @@ module.exports = router
 # 심화 1-21. 비밀번호 암호화(bcrypt 라이브러리)
 위에 글 참조
 
+# 심화 1-22. 로그인페이지 생성(localstorage 사용법)
+>localstorage 참고자료
+https://www.daleseo.com/js-web-storage/
+
