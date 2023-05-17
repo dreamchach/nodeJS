@@ -668,4 +668,6 @@ module.exports = router
 ```
 로 작성하면, 예를 들어 위의 api주소는 `/users/register`로 이동된다.
 
+# 심화 1-21. 비밀번호 암호화(bcrypt 라이브러리)
+위에 글 참조
 
