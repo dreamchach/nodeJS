@@ -675,3 +675,6 @@ module.exports = router
 >localstorage 참고자료
 https://www.daleseo.com/js-web-storage/
 
+# 심화 1-23. 로그인 라우터
+회원가입 라우터 참조
+
