@@ -679,3 +679,5 @@ https://www.daleseo.com/js-web-storage/
 회원가입 라우터 참조
 
 # 심화 1-24. 인증 확인
+
+# 심화 1-25. ProtectedRoutes, NotAuthRoutes
