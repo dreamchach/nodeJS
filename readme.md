@@ -678,3 +678,4 @@ https://www.daleseo.com/js-web-storage/
 # 심화 1-23. 로그인 라우터
 회원가입 라우터 참조
 
+# 심화 1-24. 인증 확인
