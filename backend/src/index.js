@@ -39,7 +39,11 @@ app.get('/', ()=>{
 
 app.use('/users', require('./routes/users'))
 
-app.use('/image' ,express.static(path.join(__dirname, '../uploads')))
+app.use(express.static(path.join(__dirname, '../uploads')))
+app.use((error, res)=>{
+    res.status(error.status || 500)
+    res.send(error.message || '서버에서 에러가 났습니다')
+})
 
 app.listen(port, ()=>{
     console.log(`${port}번에서 실행이 되었습니다`)
