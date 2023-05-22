@@ -684,3 +684,6 @@ https://www.daleseo.com/js-web-storage/
 
 # 심화 1-26. NavItems
 참고자료 https://developer-talk.tistory.com/269
+
+# 심화 1-27. 만료된 token 처리하기(refreshToken 없을 시)
+
