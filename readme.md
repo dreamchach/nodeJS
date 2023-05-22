@@ -789,3 +789,19 @@ export const routes = [
   ...
 ]
 ```
+
+frontend 
+`npm i react-dropzone`
+`npm i react-image-gallery`
+`npm i react-responsive-carousel`
+
+>참고자료 react-dropzone https://ock-nomad.tistory.com/195
+참고자료 react-image-gallery https://www.npmjs.com/package/react-image-gallery
+참고자료 react-responsive-carousel https://www.npmjs.com/package/react-responsive-carousel
+
+backend
+`npm i async`
+`npm i multer`
+
+>참고자료 async https://www.npmjs.com/package/async
+참고자료 multer https://github.com/expressjs/multer/blob/master/doc/README-ko.md
