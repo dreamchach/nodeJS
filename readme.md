@@ -687,3 +687,105 @@ https://www.daleseo.com/js-web-storage/
 
 # 심화 1-27. 만료된 token 처리하기(refreshToken 없을 시)
 
+# 심화 2-1. shop app을 위한 소스코드 추가하기
+`backend/src/models/User.js`
+```javascript
+const userSchema= mongoose.Schema({
+  ...,
+  cart : {
+    type:Array,
+    default:[]
+  },
+  history: {
+    type:Array,
+    default:[]
+  }
+})
+```
+
+`backend/src/routes/users.js`
+```javascript
+router.get('/auth', auth, async(req, res)=>{
+  return res.json({
+    ...,
+    cart:req.user.cart,
+    history:req.user.history
+  })
+})
+```
+
+`frontend/src/App.jsx`
+```javascript
+<Route element={< ProtectedRoutes isAuth={isAuth}/>}>
+  <Route path="/product/upload" element={<Upload/>}/>
+  <Route path="/product/:productId" element={<ProductId/>}/>
+  <Route path="/user/cart" element={<Cart/>}/>
+  <Route path="/history" element={<History/>}/>
+</Route>
+```
+
+`frontend/src/components/NavItem.jsx`
+```javascript
+const cart = 2
+
+return (
+  <ul>
+    {routes.map(({to, name, auth, icon})=>{
+      ...
+      else if(icon) {
+        return (
+          <li key={name}>
+            <Link to={to}>
+              {icon}
+              <span>
+                {cart}
+              </span>
+            </Link>
+          </li>
+        )
+      }
+    })}
+  </ul>
+)
+```
+
+`backend/src/models/Payment.js`
+```javascript
+const paymentSchema= mongoose.Schema({
+  user: {
+    type:Object
+  },
+  data: {
+    type:Array,
+    default:[]
+  },
+  product: {
+    type:Array,
+    default: []
+  }
+}, {timestamps:true})
+```
+
+`backend/src/models/Product.js`
+```javascript
+const productSchema= mongoose.Schema({
+  writer: {
+    type:Schema.Types.ObjectId,
+    ref:'User'
+  },
+  ...
+})
+```
+
+`frontend/src/utils/navItemRoutes.jsx`
+여기서 `<AiOutlineShoppingCart/>`로 인한 에러발생
+파일을 .js에서 .jsx로 변경
+```javascript
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+
+export const routes = [
+  ...,
+  {to:'/user/cart', name:'카트', auth:true, icon:<AiOutlineShoppingCart style={{fontSize:'1.4rem'}}/>},
+  ...
+]
+```

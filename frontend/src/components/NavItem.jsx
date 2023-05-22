@@ -7,6 +7,7 @@ const NavItem = (mobile) => {
     console.log(Object.keys(mobile).length !== 0)
     
     const isAuth = useSelector(state=>state.user?.isAuth)
+    const cart = 2
     
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ const NavItem = (mobile) => {
 
   return (
     <ul>
-        {routes.map(({to, name, auth})=>{
+        {routes.map(({to, name, auth, icon})=>{
             if(isAuth !== auth) return null
 
             if(name === '로그아웃') {
@@ -31,7 +32,19 @@ const NavItem = (mobile) => {
                         </Link>
                     </li>
                 )
-            } else {
+            } else if(icon) {
+                return (
+                    <li key={name}>
+                        <Link to={to}>
+                            {icon}
+                            <span>
+                                {cart}
+                            </span>
+                        </Link>
+                    </li>
+                )
+            }
+             else {
                 return (
                     <li key={name}>
                         <Link to={to}>
