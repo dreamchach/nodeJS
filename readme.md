@@ -817,3 +817,11 @@ app.use('/products', require('./routes/product'))
 `event.preventDefault()`
 >참고자료
 https://velog.io/@hang_kem_0531/JS-event.preventDefault-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0
+
+# 심화 2-4. 파일 업로드 컴포넌트 생성 (react-dropzone 라이브러리 사용)
+`frontend/.env`
+```javascript
+VITE_URL='http://localhost:4000'
+// 4000는 백엔드 port 번호
+```
+

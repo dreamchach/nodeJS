@@ -3,6 +3,7 @@ import { continents } from "../utils/functions"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import instance from "../utils/axios"
+import FileUpload from "../components/FileUpload"
 
 const Upload = () => {
   const [product, setProduct] = useState({
@@ -41,6 +42,13 @@ const Upload = () => {
     }
   }
 
+  const handleImages = (newImages) => {
+    setProduct((prevState)=>({
+      ...prevState,
+      images:newImages
+    }))
+  }
+
   return (
     <div>
       <div>
@@ -48,6 +56,8 @@ const Upload = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
+        <FileUpload images={product.images} onImageChange={handleImages}/>
+
         <div>
           <label htmlFor="title">이름</label>
           <input name="title" id="title" onChange={handleChange} value={product.title}/>
