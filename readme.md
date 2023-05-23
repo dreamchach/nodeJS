@@ -807,3 +807,13 @@ backend
 참고자료 multer https://github.com/expressjs/multer/blob/master/doc/README-ko.md
 
 # 심화 2-2. 상품 upload페이지 UI 생성
+
+# 심화 2-3. 상품 upload페이지 기능 생성
+`backend/src/index.js`
+```javascript
+app.use('/products', require('./routes/product'))
+```
+
+`event.preventDefault()`
+>참고자료
+https://velog.io/@hang_kem_0531/JS-event.preventDefault-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0
