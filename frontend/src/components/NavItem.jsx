@@ -1,6 +1,6 @@
 import { useDispatch,useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
-import { routes } from '../utils/navItemRoutes'
+import { routes } from '../utils/functions'
 import { logoutUser } from '../store/thunkFuntions'
 
 const NavItem = (mobile) => {

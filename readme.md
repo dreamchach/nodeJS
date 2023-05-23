@@ -805,3 +805,5 @@ backend
 
 >참고자료 async https://www.npmjs.com/package/async
 참고자료 multer https://github.com/expressjs/multer/blob/master/doc/README-ko.md
+
+# 심화 2-2. 상품 upload페이지 UI 생성
