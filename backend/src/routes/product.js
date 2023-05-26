@@ -34,4 +34,10 @@ router.post('/image',upload.single('file'),(req, res, next)=>{
     }
 })
 
+/*
+router.delete('/upload', async(req, res, next)=>{
+    console.log(req)
+})
+*/
+
 module.exports = router

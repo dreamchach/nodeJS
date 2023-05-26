@@ -7,8 +7,6 @@ const prop = props
 const [images, setImages] = useState(prop.images)
 const onImageChange = prop.onImageChange
 
-console.log(images)
-
 useEffect(() => {
     setImages(prop.images)
 }, [props])
@@ -39,6 +37,16 @@ useEffect(() => {
       let newImages = [...images]
       newImages.splice(currentIndex, 1)
       onImageChange(newImages)
+/*
+      try {
+        const del = instance.delete('/products/upload', {
+          query:image
+        })
+        console.log(del)
+      } catch (error) {
+        console.log(error)
+      }
+  */
     }
 
   return (
