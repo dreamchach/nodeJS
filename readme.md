@@ -825,3 +825,36 @@ VITE_URL='http://localhost:4000'
 // 4000는 백엔드 port 번호
 ```
 
+# 심화 2-5. multer을 이용해서 파일 업로드하기
+가장 고생을 많이했다.
+어렵다. 
+문제 해결하는데 이틀이나 걸렸다...ㅠ
+
+>callback함수, promise 참고자료
+https://velog.io/@ko1586/Callback%ED%95%A8%EC%88%98%EB%9E%80-%EB%AD%94%EB%8D%B0
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://samsamgoo.tistory.com/158
+
+>FormData() 참고자료
+https://developer.mozilla.org/ko/docs/Web/API/FormData
+
+>eslint 참고자료
+https://velog.io/@253eosam/ESLint-%EB%94%94%ED%85%8C%EC%9D%BC%ED%95%98%EA%B2%8C-%ED%83%90%EA%B5%AC%ED%95%98%EA%B8%B0
+https://eslint.org/docs/latest/use/getting-started
+https://backend-intro.vlpt.us/1/01.html
+
+>에러
+`missing in props validation` 에러 참고자료
+https://haerim95.tistory.com/41
+https://velog.io/@fenjo/React-eslint-error-missing-in-props-validation-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95
+https://www.tutorialspoint.com/reactjs/reactjs_props_validation.htm
+`TypeError: Converting circular structure to JSON`에러 참고자료
+https://ohgyun.com/399
+
+>multer 참고자료
+https://gngsn.tistory.com/37#:~:text=Multer%EB%8A%94%20%ED%8C%8C%EC%9D%BC%20%EC%97%85%EB%A1%9C%EB%93%9C%EB%A5%BC,%EB%A5%BC%20%EC%B6%94%EA%B0%80%ED%95%98%EC%97%AC%20%EB%84%98%EA%B2%A8%EC%A4%8D%EB%8B%88%EB%8B%A4.
+https://github.com/expressjs/multer/blob/master/doc/README-ko.md
+https://www.zerocho.com/category/NodeJS/post/5950a6c4f7934c001894ea83
+
+>vite 환경변수 사용 참고자료
+https://vitejs-kr.github.io/guide/env-and-mode.html
