@@ -858,3 +858,5 @@ https://www.zerocho.com/category/NodeJS/post/5950a6c4f7934c001894ea83
 
 >vite 환경변수 사용 참고자료
 https://vitejs-kr.github.io/guide/env-and-mode.html
+
+# 심화 2-6. landing page UI 생성
