@@ -862,3 +862,25 @@ https://vitejs-kr.github.io/guide/env-and-mode.html
 # 심화 2-6. landing page UI 생성
 
 # 심화 2-7. 상품 데이터 가져오는 route 생성하기
+
+# 심화 2-8. 더 보기 기능 생성하기
+>http 메서드 참고자료
+https://velog.io/@yh20studio/CS-Http-Method-%EB%9E%80-GET-POST-PUT-DELETE
+
+>axios query 참고자료
+https://kkh0977.tistory.com/1913
+
+>몽구스DB 메서드 참고자료
+.populate()
+https://www.zerocho.com/category/MongoDB/post/59a66f8372262500184b5363
+https://fierycoding.tistory.com/35
+몽구스DB 쿼리빌더
+https://www.zerocho.com/category/MongoDB/post/59bd148b1474c800194b695a
+
+>object key 변수처리 참고자료
+https://koonsland.tistory.com/146
+
+>event.preventDefault() 참고자료
+https://programming119.tistory.com/100
+
+# 심화 2-9. 

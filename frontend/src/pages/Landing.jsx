@@ -7,18 +7,23 @@ import SearchInput from "../components/landing/SearchInput"
 
 const Landing = () => {
 const limit = 4
-//const [searchTerm, setSearchTerm] = useState('')
+const [searchTerm, setSearchTerm] = useState('')
 const [products, setProducts] = useState([])
 const [skip, setSkip] = useState(0)
 const [hasMore, setHasMore] = useState(false)
-//const [filters, setFilters] = useState({
-//  continents:[],
-//  price:[]
-//})
+const [filters, setFilters] = useState({
+  continents:[],
+  price:[]
+})
 
-console.log(setSkip, setHasMore)
+useEffect(() => {
+  fetchProducts({skip, limit})
+}, [])
 
-const fetchProducts = ({skip, limit, loadMore=false, filters={}, searchTerm=''})=>{
+
+console.log(setHasMore, setSearchTerm, setFilters)
+
+const fetchProducts = async({skip, limit, loadMore=false, filters={}, searchTerm=''})=>{
   const params = {
     skip,
     limit,
@@ -26,23 +31,26 @@ const fetchProducts = ({skip, limit, loadMore=false, filters={}, searchTerm=''})
     searchTerm
   }
 
-  console.log(loadMore)
-
   try {
-instance.get('/products', {params}).then((item)=>{
-      setProducts(item.data.array)
-    }).catch((error)=>{
-      console.log(error)
-    })
+    const response = await instance.get('/products', {params})
+      setProducts([...products, ...response.data.product])
+      setHasMore(response.data.hasMore)
   } catch (error) {
     console.log(error)
   }
 }
 
-useEffect(() => {
-  fetchProducts({skip, limit})
-}, [])
-
+const handleLoadMore = () => {
+  const body = {
+    skip:skip+limit,
+    limit,
+    loadMore:true,
+    filters,
+    searchTerm
+  }
+  fetchProducts(body)
+  setSkip(skip+limit)
+}
 
   return (
     <div>
@@ -70,7 +78,7 @@ useEffect(() => {
         </div>
         {hasMore && (
           <div>
-            <button>더 보기</button>
+            <button onClick={handleLoadMore}>더 보기</button>
           </div>
         )}
       </div>
