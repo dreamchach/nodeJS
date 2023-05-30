@@ -16,9 +16,9 @@ const [hasMore, setHasMore] = useState(false)
 //  price:[]
 //})
 
-console.log(setProducts, setSkip, setHasMore)
+console.log(setSkip, setHasMore)
 
-const fetchProducts = (skip, limit, loadMore=false, filters={}, searchTerm='')=>{
+const fetchProducts = ({skip, limit, loadMore=false, filters={}, searchTerm=''})=>{
   const params = {
     skip,
     limit,
@@ -29,15 +29,18 @@ const fetchProducts = (skip, limit, loadMore=false, filters={}, searchTerm='')=>
   console.log(loadMore)
 
   try {
-    const response = instance.get('/products', {params})
-    console.log(response)
+instance.get('/products', {params}).then((item)=>{
+      setProducts(item.data.array)
+    }).catch((error)=>{
+      console.log(error)
+    })
   } catch (error) {
     console.log(error)
   }
 }
 
 useEffect(() => {
-  fetchProducts(skip, limit)
+  fetchProducts({skip, limit})
 }, [])
 
 
@@ -59,8 +62,10 @@ useEffect(() => {
           <SearchInput/>
         </div>
         <div>
-          {products.map((_, index)=>(
-            <CardItem key={index}/>
+          {products.map((item)=>(
+            <div  key={item._id}>
+              <CardItem item={item} />
+            </div>
           ))}
         </div>
         {hasMore && (

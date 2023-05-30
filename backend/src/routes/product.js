@@ -40,4 +40,12 @@ router.delete('/upload', async(req, res, next)=>{
 })
 */
 
+router.get('/', (_, res, next)=>{
+    Product.find().populate('writer').then((array)=>{
+            return res.status(200).json({
+                array
+            })
+        }).catch((err)=>{next(err)})
+})
+
 module.exports = router

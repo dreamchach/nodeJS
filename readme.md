@@ -860,3 +860,5 @@ https://www.zerocho.com/category/NodeJS/post/5950a6c4f7934c001894ea83
 https://vitejs-kr.github.io/guide/env-and-mode.html
 
 # 심화 2-6. landing page UI 생성
+
+# 심화 2-7. 상품 데이터 가져오는 route 생성하기
