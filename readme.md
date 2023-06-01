@@ -883,4 +883,6 @@ https://koonsland.tistory.com/146
 >event.preventDefault() 참고자료
 https://programming119.tistory.com/100
 
-# 심화 2-9. 
+# 심화 2-9. checkbox filter기능 생성하기
+
+

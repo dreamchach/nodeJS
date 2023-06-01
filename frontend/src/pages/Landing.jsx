@@ -4,6 +4,7 @@ import CardItem from "../components/landing/CardItem"
 import CheckBox from "../components/landing/CheckBox"
 import RadioBox from "../components/landing/RadioBox"
 import SearchInput from "../components/landing/SearchInput"
+import { continents } from "../utils/functions"
 
 const Landing = () => {
 const limit = 4
@@ -33,7 +34,11 @@ const fetchProducts = async({skip, limit, loadMore=false, filters={}, searchTerm
 
   try {
     const response = await instance.get('/products', {params})
+    if(loadMore) {
       setProducts([...products, ...response.data.product])
+    }else {
+      setProducts(response.data.product)
+    }
       setHasMore(response.data.hasMore)
   } catch (error) {
     console.log(error)
@@ -52,6 +57,24 @@ const handleLoadMore = () => {
   setSkip(skip+limit)
 }
 
+const handleFilters = (filterData, category)=>{
+  const newFilters = {...filters}
+  newFilters[category]=filterData
+  showFilteredResult(newFilters)
+  setFilters(newFilters)
+}
+
+const showFilteredResult = (filters)=>{
+  const body = {
+    skip:0,
+    limit,
+    filters,
+    searchTerm,
+  }
+  fetchProducts(body)
+  setSkip(0)
+}
+
   return (
     <div>
       <div>
@@ -60,7 +83,7 @@ const handleLoadMore = () => {
       <div>
         <div>
           <div>
-            <CheckBox/>
+            <CheckBox continents={continents} checkedContinents={filters.continents} onFilters={(filters)=>{handleFilters(filters, 'continents')}}/>
           </div>
           <div>
             <RadioBox/>
@@ -71,7 +94,7 @@ const handleLoadMore = () => {
         </div>
         <div>
           {products.map((item)=>(
-            <div  key={item._id}>
+            <div key={item._id}>
               <CardItem item={item} />
             </div>
           ))}

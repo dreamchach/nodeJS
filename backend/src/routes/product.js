@@ -48,9 +48,24 @@ router.get('/', async(req, res, next)=>{
     const skip = req.query.skip ? Number(req.query.skip) : 0
     const term = req.query.searchTerm
 
+    let args={}
+    console.log(req.query.filters)
+    // { continents: [ '3', '6', '1', '2', '4', '7' ] }
+
+    for(let key in req.query.filters){
+        console.log(key)
+        // continents
+
+        if(req.query.filters[key].length > 0){
+            args[key]=req.query.filters[key]
+        }
+    }
+    console.log(args)
+    // { continents: [ '3', '6', '1', '2', '4', '7' ] }
+
     try {
-        const product = await Product.find().populate('writer').sort({[sortBy]:order}).skip(skip).limit(limit)
-        const productsTotal = await Product.countDocuments()
+        const product = await Product.find(args).populate('writer').sort({[sortBy]:order}).skip(skip).limit(limit)
+        const productsTotal = await Product.countDocuments(args)
         const hasMore = skip+limit < productsTotal ? true : false
         
         return res.status(200).json({
