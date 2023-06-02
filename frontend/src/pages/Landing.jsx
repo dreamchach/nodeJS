@@ -92,6 +92,18 @@ const showFilteredResult = (filters)=>{
   setSkip(0)
 }
 
+const handleSearch = (event) => {
+  const body={
+    skip:0,
+    limit,
+    filters,
+    searchTerm:event.target.value
+  }
+  setSkip(0)
+  setSearchTerm(event.target.value)
+  fetchProducts(body)
+}
+
   return (
     <div>
       <div>
@@ -107,7 +119,7 @@ const showFilteredResult = (filters)=>{
           </div>
         </div>
         <div>
-          <SearchInput/>
+          <SearchInput searchTerm={searchTerm} onSearch={handleSearch}/>
         </div>
         <div>
           {products.map((item)=>(

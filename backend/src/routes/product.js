@@ -70,6 +70,12 @@ router.get('/', async(req, res, next)=>{
     console.log(args)
     // { continents: [ '3', '6', '1', '2', '4', '7' ] }
 
+    console.log(term)
+    
+    if(term){
+        args['$text']={$search:term}
+    }
+
     try {
         const product = await Product.find(args).populate('writer').sort({[sortBy]:order}).skip(skip).limit(limit)
         const productsTotal = await Product.countDocuments(args)

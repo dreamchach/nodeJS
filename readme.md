@@ -896,3 +896,11 @@ http://solarisailab.com/archives/1908
 >javascript for...in구문
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...in
 https://jsdev.kr/t/for-in-vs-for-of/2938
+
+# 심화 2-11. 검색기능 생성하기
+>mongoDB 검색기능
+https://www.mongodb.com/docs/atlas/atlas-search/tutorial/partial-match/
+https://sy34.net/mongodb-full-text-search/
+
+>mongoDB의 index란?
+https://ryu-e.tistory.com/1
