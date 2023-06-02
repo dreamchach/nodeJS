@@ -91,4 +91,31 @@ router.get('/', async(req, res, next)=>{
     }
 })
 
+router.get('/:id', async (req, res, next)=>{
+    let id = req.params.id
+
+    // req.params.id가 배열일 경우
+    /*
+    const type = req.query.type
+    if(type === 'array'){
+        let ids = id.split(',')
+        id=ids.map((item)=>{
+            return item
+        })
+    }
+
+    try {
+        const product = await Product.find({_id : {$in : id}}).populate('writer')
+        return res.status(200).send(product)
+    }
+    */
+
+    try {
+        const product = await Product.find({_id:id}).populate('writer')
+        return res.status(200).send(product)
+    } catch (error){
+        next(error)
+    }
+})
+
 module.exports = router

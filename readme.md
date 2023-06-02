@@ -904,3 +904,10 @@ https://sy34.net/mongodb-full-text-search/
 
 >mongoDB의 index란?
 https://ryu-e.tistory.com/1
+
+# 심화 3-1. 상품 디테일페이지 이용하기
+>즉시실행함수
+https://jongminfire.dev/java-script-%EC%A6%89%EC%8B%9C%EC%8B%A4%ED%96%89%ED%95%A8%EC%88%98-iife
+
+>mongoDB query조정
+https://www.mongodb.com/docs/manual/reference/operator/query/in/
