@@ -4,7 +4,7 @@ import CardItem from "../components/landing/CardItem"
 import CheckBox from "../components/landing/CheckBox"
 import RadioBox from "../components/landing/RadioBox"
 import SearchInput from "../components/landing/SearchInput"
-import { continents } from "../utils/functions"
+import { continents, prices } from "../utils/functions"
 
 const Landing = () => {
 const limit = 4
@@ -22,7 +22,7 @@ useEffect(() => {
 }, [])
 
 
-console.log(setHasMore, setSearchTerm, setFilters)
+console.log(setSearchTerm)
 
 const fetchProducts = async({skip, limit, loadMore=false, filters={}, searchTerm=''})=>{
   const params = {
@@ -60,8 +60,25 @@ const handleLoadMore = () => {
 const handleFilters = (filterData, category)=>{
   const newFilters = {...filters}
   newFilters[category]=filterData
+  
+  if(category === 'price') {
+    const priceValue = handlePrice(filterData)
+    newFilters[category] = priceValue
+  }
+
   showFilteredResult(newFilters)
   setFilters(newFilters)
+}
+
+const handlePrice = (value) => {
+  let array = []
+
+  for(let key in prices){
+    if(prices[key].key === Number(value)){
+      array = prices[key].array
+    }
+  }
+  return array
 }
 
 const showFilteredResult = (filters)=>{
@@ -86,7 +103,7 @@ const showFilteredResult = (filters)=>{
             <CheckBox continents={continents} checkedContinents={filters.continents} onFilters={(filters)=>{handleFilters(filters, 'continents')}}/>
           </div>
           <div>
-            <RadioBox/>
+            <RadioBox prices={prices} checkedPrice={filters.price} onFilters={(filters)=>{handleFilters(filters, 'price')}}/>
           </div>
         </div>
         <div>

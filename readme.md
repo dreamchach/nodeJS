@@ -885,4 +885,14 @@ https://programming119.tistory.com/100
 
 # 심화 2-9. checkbox filter기능 생성하기
 
+# 심화 2-10. radiobox filter기능 생성하기
+>에러 참조자료
+https://www.inflearn.com/questions/13378/%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%B6%94%EA%B0%80%ED%95%98%EB%A9%B4-key-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%B4%EC%84%9C%EC%97%AC
 
+>mongoDB query조정
+https://www.mongodb.com/docs/manual/reference/operator/query-comparison/
+http://solarisailab.com/archives/1908
+
+>javascript for...in구문
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...in
+https://jsdev.kr/t/for-in-vs-for-of/2938

@@ -18,3 +18,12 @@ export const continents = [
     {key:6, value:'Australia'},
     {key:7, value:'Antarctica'},
 ]
+
+export const prices = [
+    {key:100, name:'모두', array:[]},
+    {key:101, name:'0~100원', array:[0, 100]},
+    {key:102, name:'101~1000원', array:[101, 1000]},
+    {key:103, name:'1001~10000원', array:[1001, 10000]},
+    {key:104, name:'10001~100000원', array:[10001, 100000]},
+    {key:105, name:'100001원 이상', array:[100001, 1000000000]},
+]

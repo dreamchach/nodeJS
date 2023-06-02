@@ -57,7 +57,14 @@ router.get('/', async(req, res, next)=>{
         // continents
 
         if(req.query.filters[key].length > 0){
-            args[key]=req.query.filters[key]
+            if(key === 'price'){
+                args[key]={
+                    $gte:req.query.filters[key][0],
+                    $lte:req.query.filters[key][1]
+                }
+            }else {
+                args[key]=req.query.filters[key]
+            }
         }
     }
     console.log(args)
