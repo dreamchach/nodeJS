@@ -40,7 +40,7 @@ router.post('/login', async(req, res, next)=>{
     }
 })
 
-router.get('/auth', auth, async(req, res)=>{
+router.get('/auth', auth, (req, res)=>{
     return res.json({
         id:req.user._id,
         email:req.user.email,
@@ -52,10 +52,51 @@ router.get('/auth', auth, async(req, res)=>{
     })
 })
 
-router.post('/logout', auth, async(req, res, next)=>{
+router.post('/logout', auth, (_, res, next)=>{
     try{
         return res.sendStatus(200)
     } catch(error) {
+        next(error)
+    }
+})
+
+router.post('/cart', auth, async(req, res, next)=>{
+    try{
+        const userInfo = await User.findOne({_id:req.user._id})
+        console.log(userInfo)
+
+        let duplicate = false
+        userInfo.cart.forEach((item) => {
+            if(item.id === req.body.id) {
+                duplicate = true
+            }            
+        });
+
+        console.log(duplicate)
+
+        if(duplicate) {
+            const user = await User.findOneAndUpdate(
+                {_id:req.user._id, 'cart.id':req.body.id},
+                {$inc:{'cart.$.qua':1}},
+                {new:true}
+            )
+            return res.status(201).send(user.cart)
+        }else {
+            const user = await User.findOneAndUpdate(
+                {_id:req.user._id},
+                {$push:{
+                    cart:{
+                        id:req.body.id,
+                        qua:1,
+                        date:Date.now()
+                    }
+                }},
+                {new:true}
+            )
+            console.log(user)
+            return res.status(201).send(user.cart)
+        }
+    } catch (error){
         next(error)
     }
 })

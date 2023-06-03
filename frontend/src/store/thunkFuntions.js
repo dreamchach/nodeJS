@@ -51,6 +51,22 @@ export const logoutUser = createAsyncThunk(
     async(_, thunkAPI) => {
         try{
             const response = await instance.post('/users/logout')
+            console.log(response)
+
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return thunkAPI.rejectWithValue(error.response.data || error.message)
+        }
+    }
+)
+
+export const addToCart = createAsyncThunk(
+    'user/addToCart',
+    async(body, thunkAPI) => {
+        try{
+            const response = await instance.post('/users/cart', body)
+            console.log(response)
             return response.data
         } catch (error) {
             console.log(error)

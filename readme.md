@@ -905,9 +905,184 @@ https://sy34.net/mongodb-full-text-search/
 >mongoDB의 index란?
 https://ryu-e.tistory.com/1
 
-# 심화 3-1. 상품 디테일페이지 이용하기
+# 심화 3-1. 상품 디테일페이지 생성하기
 >즉시실행함수
 https://jongminfire.dev/java-script-%EC%A6%89%EC%8B%9C%EC%8B%A4%ED%96%89%ED%95%A8%EC%88%98-iife
 
 >mongoDB query조정
 https://www.mongodb.com/docs/manual/reference/operator/query/in/
+
+# 심화 3-2. product info 컴포넌트 생성하기
+
+만약 백엔드에서 이상하게 원하는 데이터가 들어가지 않는 경우, `console.log()`를 찍어서
+```javascript
+Query {
+  _mongooseOptions: {},
+  _transforms: [],
+  _hooks: Kareem { _pres: Map(0) {}, _posts: Map(0) {} },
+  _executionStack: null,
+  mongooseCollection: Collection {
+    collection: Collection { s: [Object] },
+    Promise: [Function: Promise],
+    modelName: 'User',
+    _closed: false,
+    opts: {
+      autoIndex: true,
+      autoCreate: true,
+      schemaUserProvidedOptions: {},
+      capped: false,
+      Promise: undefined,
+      '$wasForceClosed': undefined
+    },
+    name: 'users',
+    collectionName: 'users',
+    conn: NativeConnection {
+      base: [Mongoose],
+      collections: [Object],
+      models: [Object],
+      config: {},
+      replica: false,
+      options: null,
+      otherDbs: [],
+      relatedDbs: {},
+      states: [Object: null prototype],
+      _readyState: 1,
+      _closeCalled: undefined,
+      _hasOpened: true,
+      plugins: [],
+      id: 0,
+      _queue: [],
+      _listening: false,
+      _connectionOptions: [Object],
+      _connectionString: 'mongodb+srv://aaa:asdf1234@node-test.uim33ep.mongodb.net/?retryWrites=true&w=majority',
+      client: [MongoClient],
+      '$initialConnection': [Promise],
+      db: [Db],
+      host: 'ac-vnczdeb-shard-00-02.uim33ep.mongodb.net',
+      port: 27017,
+      name: 'test'
+    },
+    queue: [],
+    buffer: false,
+    emitter: EventEmitter {
+      _events: [Object: null prototype] {},
+      _eventsCount: 0,
+      _maxListeners: undefined,
+      [Symbol(kCapture)]: false
+    }
+  },
+  model: Model { User },
+  schema: Schema {
+    obj: {
+      name: [Object],
+      email: [Object],
+      password: [Object],
+      role: [Object],
+      image: [Function: String],
+      cart: [Object],
+      history: [Object]
+    },
+    paths: {
+      name: [SchemaString],
+      email: [SchemaString],
+      password: [SchemaString],
+      role: [SchemaNumber],
+      image: [SchemaString],
+      cart: [SchemaArray],
+      history: [SchemaArray],
+      _id: [ObjectId],
+      __v: [SchemaNumber]
+    },
+    aliases: {},
+    subpaths: { 'cart.$': [Mixed], 'history.$': [Mixed] },
+    virtuals: { id: [VirtualType] },
+    singleNestedPaths: {},
+    nested: {},
+    inherits: {},
+    callQueue: [],
+    _indexes: [],
+    methods: { comparePassword: [AsyncFunction (anonymous)] },
+    methodOptions: {},
+    statics: {},
+    tree: {
+      name: [Object],
+      email: [Object],
+      password: [Object],
+      role: [Object],
+      image: [Function: String],
+      cart: [Object],
+      history: [Object],
+      _id: [Object],
+      __v: [Function: Number],
+      id: [VirtualType]
+    },
+    query: {},
+    childSchemas: [],
+    plugins: [ [Object], [Object], [Object], [Object], [Object] ],
+    '$id': 1,
+    mapPaths: [],
+    s: { hooks: [Kareem] },
+    _userProvidedOptions: {},
+    options: {
+      typeKey: 'type',
+      id: true,
+      _id: true,
+      validateBeforeSave: true,
+      read: null,
+      shardKey: null,
+      discriminatorKey: '__t',
+      autoIndex: null,
+      minimize: true,
+      optimisticConcurrency: false,
+      versionKey: '__v',
+      capped: false,
+      bufferCommands: true,
+      strictQuery: false,
+      strict: true,
+      pluralization: true
+    },
+    '$globalPluginsApplied': true,
+    _requiredpaths: [],
+    _indexedpaths: [ [Array] ]
+  },
+  op: 'findOneAndUpdate',
+  options: { new: true },
+  _conditions: { _id: new ObjectId("6465f3b8971f7ea52c1b456f") },
+  _fields: undefined,
+  _updateDoc: undefined,
+  _path: undefined,
+  _distinctDoc: undefined,
+  _collection: NodeCollection {
+    collection: Collection {
+      collection: [Collection],
+      Promise: [Function: Promise],
+      modelName: 'User',
+      _closed: false,
+      opts: [Object],
+      name: 'users',
+      collectionName: 'users',
+      conn: [NativeConnection],
+      queue: [],
+      buffer: false,
+      emitter: [EventEmitter]
+    },
+    collectionName: 'users'
+  },
+  _traceFunction: undefined,
+  '$useProjection': true,
+  _update: { '$push': { cart: [Object] } }
+}
+```
+같은 형식이 발생하면 먼저 자신이 `try...catch`구문을 사용했는지 확인하고, 사용했을 경우,
+`async...await`를 사용하면 해결할 수 있음.
+
+> mongoDB 필드 업데이트 연산자 참고자료(`$inc`)
+https://www.mongodb.com/docs/manual/reference/operator/update-field/
+
+>mongoDB `findOneAndUpdate` 참고자료
+https://velog.io/@yejin20/mongoose-findOneAndUpdate
+https://www.mongodb.com/docs/manual/reference/method/db.collection.findOneAndUpdate/
+
+>http 상태코드 참고자료
+https://morphys.tistory.com/entry/HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C-200-201-301-303-400-401-404-500-503
+https://sanghaklee.tistory.com/61
