@@ -103,6 +103,7 @@ router.get('/:id', async (req, res, next)=>{
     */
 
     const type = req.query.type || 'single'
+    console.log(type)
 
     if(type === 'array'){
         let ids = id.split(',')

@@ -1088,3 +1088,18 @@ https://morphys.tistory.com/entry/HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C-200-
 https://sanghaklee.tistory.com/61
 
 # 심화 3-3. 쇼핑카트 페이지 데이터 가져오기
+
+# 심화 3-4. cart table 컴포넌트 생성하기
+```javascript
+  const renderImage=(images)=>{
+    let image = images[0]
+    return `${import.meta.env.VITE_URL}/${image}`
+  }
+
+  <img alt={item} src={renderImage(item.images)}/>
+```
+위와 같이 작성된 이유는 만약 src를 `백틱`으로 감싸면 
+```bash
+ERROR: Expected "{" but found "`"`
+```
+이런 에러가 발생된다.

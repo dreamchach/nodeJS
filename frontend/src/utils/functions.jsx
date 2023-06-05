@@ -27,3 +27,5 @@ export const prices = [
     {key:104, name:'10001~100000원', array:[10001, 100000]},
     {key:105, name:'100001원 이상', array:[100001, 1000000000]},
 ]
+
+export const thead = ['사진', '개수', '가격', '삭제']
