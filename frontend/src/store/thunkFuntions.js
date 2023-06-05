@@ -96,3 +96,24 @@ export const getCartItems = createAsyncThunk(
         }
     }
 )
+
+export const removeItem = createAsyncThunk(
+    'user/removeItem',
+    async(body, thunkAPI) => {
+        try{
+            const response = await instance.delete(`/users/cart?id=${body}`)
+
+            response.data.cart.forEach((item)=>{
+                response.data.productInfo.forEach((productDetail, index)=>{
+                    if(item.id === productDetail._id){
+                        response.data.productInfo[index].qua = item.qua
+                    }
+                })
+            })
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return thunkAPI.rejectWithValue(error.response.data || error.message)
+        }
+    }
+)
