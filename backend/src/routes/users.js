@@ -4,6 +4,9 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const auth = require('../middleware/auth')
 const Product = require('../models/Product')
+const Payment = require('../models/Payment')
+const async = require('async')
+const crypto = require('node:crypto').webcrypto;
 
 router.post('/register', async(req, res, next)=>{
     try{
@@ -124,6 +127,55 @@ router.delete('/cart', auth, async(req, res, next)=>{
     } catch(error){
         next(error)
     }
+})
+
+router.post('/payment', auth, async(req, res)=>{
+    let history = []
+    let data = {}
+
+    req.body.forEach((item)=>{
+        history.push({
+            dateOfPurchase: new Date().toISOString(),
+            name:item.title,
+            id:item._id,
+            price:item.price,
+            qua:item.qua,
+            paymentId:crypto.randomUUID()
+        })
+    })
+
+    data.user = {
+        id:req.user._id,
+        name:req.user.name,
+        email:req.user.email
+    }
+    data.product = history
+
+    const payment = new Payment(data)
+    const payDocs = await payment.save()
+
+    let products = []
+    payDocs.product.forEach(item=>{
+        products.push({id:item.id, qua:item.qua})
+    })
+
+    await User.findOneAndUpdate(
+        {_id:req.user._id},
+        {$push:{history:{$each:history}}, $set:{cart:[]}}
+    )
+
+    async.eachSeries(products, async(item)=>{
+        await Product.updateOne(
+            {_id:item.id},
+            {$inc:{'sold':item.qua}}
+        )
+    }, (err)=>{
+        if(err){
+            return res.status(500).send(err)
+        }else {
+            return res.sendStatus(200)
+        }
+    })
 })
 
 module.exports = router

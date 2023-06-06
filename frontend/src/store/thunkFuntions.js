@@ -117,3 +117,19 @@ export const removeItem = createAsyncThunk(
         }
     }
 )
+
+export const payProducts = createAsyncThunk(
+    'user/payProducts',
+    async(body, thunkAPI) => {
+        console.log(body)
+        try {
+            const response = await instance.post('/users/payment', body)
+            console.log(response)
+
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return thunkAPI.rejectWithValue(error.response.data || error.message)            
+        }
+    }
+)

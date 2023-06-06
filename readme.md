@@ -1105,3 +1105,20 @@ ERROR: Expected "{" but found "`"`
 이런 에러가 발생된다.
 
 # 심화 3-5. cart item 삭제기능 생성하기
+
+# 심화 3-6. 결제기능 생성하기
+>Date.prototype.toISOString() 참고자료
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date
+
+>crypto.randomUUID() 참고자료
+https://velog.io/@dishate/uuid%EB%A5%BC-%EB%8C%80%EC%8B%A0%ED%95%A0-crypto.randomUUID
+https://nodejs.dev/en/api/v18/webcrypto/
+https://defineall.tistory.com/701
+
+>Symbol 참고자료
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+
+>async 라이브러리 참고자료
+https://sub0709.tistory.com/3
+

@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react"
 import { useSelector ,useDispatch} from "react-redux"
-import { getCartItems, removeItem } from "../store/thunkFuntions"
+import { getCartItems, removeItem, payProducts } from "../store/thunkFuntions"
 import CartTable from "../components/cart/CartTable"
 
 const Cart = () => {
@@ -44,6 +44,10 @@ const Cart = () => {
   const onRemoveItem = (productId) => {
     dispatch(removeItem(productId))
   }
+
+  const handlePayment = () => {
+    dispatch(payProducts(cartDetail))
+  }
   
   
   return (
@@ -56,7 +60,7 @@ const Cart = () => {
           <CartTable product={cartDetail} onRemoveItem={onRemoveItem}/>
           <div>
             <p>합계 : {total}원</p>
-            <button>결제하기</button>
+            <button onClick={handlePayment}>결제하기</button>
           </div>
         </div>
         :
