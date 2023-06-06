@@ -1122,3 +1122,6 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Sy
 >async 라이브러리 참고자료
 https://sub0709.tistory.com/3
 
+# 심화 3-7. history페이지 생성하기
+> dayjs 라이브러리 참고자료
+https://github.com/iamkun/dayjs/blob/HEAD/docs/ko/README-ko.md
